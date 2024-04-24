@@ -15,7 +15,7 @@ namespace BiddingPlatform.Auction
         public DateTime startingDate { get; set; }
         public string description {  get; set; }
         public string name { get; set; }
-        public float currentMaxSum {  get; set; }
+        public float currentMaxSum { get; set; }
         private List<BasicUser> listOfUsers { get; set; }
         public List<IBidModel> listOfBids { get; set; }
 
