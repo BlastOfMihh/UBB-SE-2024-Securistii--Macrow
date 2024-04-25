@@ -28,7 +28,7 @@ namespace NUnitMacrow.BidTests
         }
 
         [Test]
-        public void TestAddBidToRepository()
+        public void AddBidToRepo_EmptyRepository_AddsBidSuccessfully()
         {
             // Arrange
             BasicUser user = new BasicUser(1, "UserName", "User");
@@ -43,7 +43,7 @@ namespace NUnitMacrow.BidTests
         }
 
         [Test]
-        public void TestDeleteBidFromRepository()
+        public void DeleteBidFromRepo_NonEmptyRepository_DeletesBidSuccessfully()
         {
             // Arrange
             BasicUser user = new BasicUser(1, "UserName", "User");
@@ -59,7 +59,7 @@ namespace NUnitMacrow.BidTests
         }
 
         [Test]
-        public void TestUpdateBidIntoRepository()
+        public void UpdateBidIntoRepo_NonEmptyRepository_UpdatesBidSuccessfully()
         {
             // Arrange
             BasicUser user1 = new BasicUser(1, "UserName", "User");
@@ -80,7 +80,7 @@ namespace NUnitMacrow.BidTests
         }
 
         [Test]
-        public void TestGetAllBidsFromRepository()
+        public void GetBids_NonEmptyRepository_GetAllBids()
         {
             // Arrange
             BasicUser user1 = new BasicUser(1, "UserName", "User");
