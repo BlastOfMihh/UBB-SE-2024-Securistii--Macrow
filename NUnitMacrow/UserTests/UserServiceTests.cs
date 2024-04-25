@@ -1,9 +1,9 @@
-﻿using BiddingPlatform.User;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BiddingPlatform.User;
 
 namespace NUnitMacrow.UserTests
 {
@@ -36,9 +36,8 @@ namespace NUnitMacrow.UserTests
     }
     internal class UserServiceTests
     {
-
         [Test]
-        public void TestAddingSuccessfullyABasicUserToTheRepo()
+        public void AddBasicUser_EmptyRepositoryAddingValidData_AddSuccessfully()
         {
             //Setup
             IUserRepository fakeRepo = new FakeRepo();
@@ -52,7 +51,7 @@ namespace NUnitMacrow.UserTests
         }
 
         [Test]
-        public void TestAddingSuccessfullyAnAdminUserToTheRepo()
+        public void AddAdminUser_EmptyRepositoryAddingValidData_AddSuccessfully()
         {
             //Setup
             IUserRepository fakeRepo = new FakeRepo();
@@ -66,7 +65,7 @@ namespace NUnitMacrow.UserTests
         }
 
         [Test]
-        public void TestRemovingSuccessfullyAUserFromTheRepo()
+        public void RemoveUser_NonEmptyRepositoryRemovingValidData_RemoveSuccessfully()
         {
             //Setup
             IUserRepository fakeRepo = new FakeRepo();
@@ -81,7 +80,7 @@ namespace NUnitMacrow.UserTests
         }
 
         [Test]
-        public void TestUpdatingSuccessfullyAUserFromTheRepo()
+        public void UpdateUser_NonEmptyRepositoryUpdatingValidData_UpdatesSuccessfully()
         {
             //Setup
             IUserRepository fakeRepo = new FakeRepo();
@@ -96,7 +95,7 @@ namespace NUnitMacrow.UserTests
         }
 
         [Test]
-        public void TestGettingListOfUsers()
+        public void GetListOfUsers_NonEmptyRepository_ReturnsValidData()
         {
             //Setup
             IUserRepository fakeRepo = new FakeRepo();
