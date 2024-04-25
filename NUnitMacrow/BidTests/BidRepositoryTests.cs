@@ -11,7 +11,8 @@ namespace NUnitMacrow.BidTests
 {
     internal class BidRepositoryTests
     {
-        private string connectionString = "Server=DESKTOP-P38TJBL\\SQLEXPRESS;Database=BiddingPlatformDB;Integrated Security=True;";
+        //private string connectionString = "Server=DESKTOP-P38TJBL\\SQLEXPRESS;Database=BiddingPlatformDB;Integrated Security=True;";
+        private string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=MangaDB;Integrated Security=True;";
         private BidRepository bidRepository;
 
         [SetUp]

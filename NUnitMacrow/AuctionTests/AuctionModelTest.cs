@@ -20,8 +20,8 @@ namespace NUnitMacrow.AuctionTests
             var userMock = new BasicUser(1, "User1", "nickname1");
             var auctionMock = new AuctionModel(1, DateTime.Now, "Test Auction", "Test", 100.0f);
 
-            Assert.Contains(userMock, auctionMock.ListOfUsers);
             auctionMock.AddUserToAuction(userMock);
+            Assert.Contains(userMock, auctionMock.ListOfUsers);
         }
 
         [Test]

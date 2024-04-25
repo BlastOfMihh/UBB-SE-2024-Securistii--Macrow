@@ -34,12 +34,12 @@ namespace NUnitMacrow.AuctionTests
 
     }
     internal class AuctionRepositoryTest {
-        
 
+        private string connectionString = "Data Source=DESKTOP-LF9HLFA\\SQLEXPRESS;Initial Catalog=TESTINGISSsecuristii;Integrated Security=true;";
         [Test]
         public void TestAddingToRepo()
         {
-            IAuctionRepository auctionRepository = new AuctionRepository("Data Source=DESKTOP-LF9HLFA\\SQLEXPRESS;Initial Catalog=TESTINGISSsecuristii;Integrated Security=true;");
+            IAuctionRepository auctionRepository = new AuctionRepository(connectionString);
 
             IAuctionModel auction = new MockAuction();
             auction.AuctionId = 99;
@@ -54,7 +54,7 @@ namespace NUnitMacrow.AuctionTests
         [Test]
         public void TestRemovingFromRepo()
         {
-            IAuctionRepository auctionRepository = new AuctionRepository("Data Source=DESKTOP-LF9HLFA\\SQLEXPRESS;Initial Catalog=TESTINGISSsecuristii;Integrated Security=true;");
+            IAuctionRepository auctionRepository = new AuctionRepository(connectionString);
 
             IAuctionModel auction = new MockAuction();
             auction.AuctionId = 99;
@@ -72,7 +72,7 @@ namespace NUnitMacrow.AuctionTests
         [Test]
         public void TestUpdatingIntoRepo()
         {
-            IAuctionRepository auctionRepository = new AuctionRepository("Data Source=DESKTOP-LF9HLFA\\SQLEXPRESS;Initial Catalog=TESTINGISSsecuristii;Integrated Security=true;");
+            IAuctionRepository auctionRepository = new AuctionRepository(connectionString);
 
             IAuctionModel auction = new MockAuction();
             auction.AuctionId = 99;
@@ -97,23 +97,23 @@ namespace NUnitMacrow.AuctionTests
         [Test]
         public void TestRepoConstructor()
         {
-            IAuctionRepository auctionRepository = new AuctionRepository("Data Source=DESKTOP-LF9HLFA\\SQLEXPRESS;Initial Catalog=ISSsecuristii;Integrated Security=true;");
+            IAuctionRepository auctionRepository = new AuctionRepository(connectionString);
             Assert.That(auctionRepository.ListOfAuctions.Count, Is.EqualTo(6));
         }
 
         [Test]
         public void TestGetMaxBidSum()
         {
-            IAuctionRepository auctionRepository = new AuctionRepository("Data Source=DESKTOP-LF9HLFA\\SQLEXPRESS;Initial Catalog=ISSsecuristii;Integrated Security=true;");
+            IAuctionRepository auctionRepository = new AuctionRepository(connectionString);
             Assert.That(auctionRepository.GetBidMaxSum(1), Is.EqualTo(300.3f));
         }
 
         [Test]
         public void TestAddToDB()
         {
-            IAuctionRepository auctionRepository = new AuctionRepository("Data Source=DESKTOP-LF9HLFA\\SQLEXPRESS;Initial Catalog=TESTINGISSsecuristii;Integrated Security=true;");
+            IAuctionRepository auctionRepository = new AuctionRepository(connectionString);
             auctionRepository.AddToDB("Test", "Test", DateTime.Now, 100);
-            IAuctionRepository resultingRepository = new AuctionRepository("Data Source=DESKTOP-LF9HLFA\\SQLEXPRESS;Initial Catalog=TESTINGISSsecuristii;Integrated Security=true;");
+            IAuctionRepository resultingRepository = new AuctionRepository(connectionString);
             Assert.That(resultingRepository.ListOfAuctions.Count, Is.EqualTo(1));
         }
     }
