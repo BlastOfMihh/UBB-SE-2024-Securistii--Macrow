@@ -26,7 +26,7 @@ namespace NUnitMacrow.UserTests
         }
 
         [Test]
-        public void TestAddUserToRepo()
+        public void AddUserToRep_EmptyRepository_ReturnsValidData()
         {
             // Arrange
             IUserTemplate user = new BasicUser(1, "UserName", "User") as IUserTemplate;
@@ -41,7 +41,7 @@ namespace NUnitMacrow.UserTests
         }
 
         [Test]
-        public void TestRemoveUserFromRepo()
+        public void RemoveUserFromRepo_NonEmptyRepository_RepositoryIsEmpty()
         {
             // Arrange
             IUserTemplate user = new BasicUser(1, "UserName", "User") as IUserTemplate;
@@ -57,7 +57,7 @@ namespace NUnitMacrow.UserTests
         }
 
         [Test]
-        public void TestUpdateUserIntoRepo()
+        public void UpdateUserIntoRepo_NonEmptyRepository_ReturnsUpdatedUser()
         {
             // Arrange
             IUserTemplate oldUser = new BasicUser(1, "OldUserName", "OldUser") as IUserTemplate;
@@ -75,7 +75,7 @@ namespace NUnitMacrow.UserTests
         }
 
         [Test]
-        public void TestGetListOfUsers()
+        public void GetListOfUsers_NonEmptyRepository_ReturnsListOfUsers()
         {
             // Arrange
             IUserTemplate user1 = new BasicUser(1, "UserName1", "User1") as IUserTemplate;

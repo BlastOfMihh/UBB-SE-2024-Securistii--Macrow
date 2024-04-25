@@ -71,7 +71,7 @@ namespace NUnitMacrow.AuctionTests
             IAuctionRepository auctionRepository = new AuctionRepository("Data Source=DESKTOP-LF9HLFA\\SQLEXPRESS;Initial Catalog=TESTINGISSsecuristii;Integrated Security=true;");
 
             IAuctionModel auction = new MockAuction();
-            auction.auctionId = 99;
+            auction.AuctionId = 99;
             auction.currentMaxSum = 100;
             auction.description = "Test";
             auction.name = "Test";

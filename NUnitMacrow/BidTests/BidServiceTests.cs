@@ -74,7 +74,7 @@ namespace NUnitMacrow.BidTests
         }
         
         [Test]
-        public void TestRemovingBidSuccessfully()
+        public void RemoveBid_NonEmptyRepository_RemovesBidSuccessfully()
         {
             // Arrange
             IBidRepository mockRepository = new MockBidRepository();
@@ -95,7 +95,7 @@ namespace NUnitMacrow.BidTests
         }
 
         [Test]
-        public void TestUpdatingBidSuccessfully()
+        public void UpdateBid_NonEmptyRepository_UpdatesBidSuccessfully()
         {
             // Arrange
             IBidRepository mockRepository = new MockBidRepository();
@@ -119,7 +119,7 @@ namespace NUnitMacrow.BidTests
         }
 
         [Test]
-        public void TestGettingAllBids()
+        public void GetBids_NonEmptyRepository_ReturnsAllBids()
         {
             // Arrange
             IBidRepository mockRepository = new MockBidRepository();
