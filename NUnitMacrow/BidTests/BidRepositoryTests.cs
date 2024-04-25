@@ -31,7 +31,7 @@ namespace NUnitMacrow.BidTests
         {
             // Arrange
             BasicUser user = new BasicUser(1, "UserName", "User");
-            IBidModel mockBid = new BidModel(1, user, 100.0f, DateTime.UtcNow);
+            IBidModel mockBid = new BidModel(1, user, 100.0f, DateTime.UtcNow) as IBidModel;
 
             // Act
             bidRepository.AddBidToRepo(mockBid);
@@ -46,7 +46,7 @@ namespace NUnitMacrow.BidTests
         {
             // Arrange
             BasicUser user = new BasicUser(1, "UserName", "User");
-            IBidModel mockBid = new BidModel(1, user, 100.0f, DateTime.UtcNow);
+            IBidModel mockBid = new BidModel(1, user, 100.0f, DateTime.UtcNow) as IBidModel;
             bidRepository.Bids.Add(mockBid);
 
             // Act
@@ -64,8 +64,8 @@ namespace NUnitMacrow.BidTests
             BasicUser user1 = new BasicUser(1, "UserName", "User");
             BasicUser user2 = new BasicUser(2, "NewUserName", "NewUser");
 
-            IBidModel oldBid = new BidModel(1, user1, 100.0f, DateTime.UtcNow);
-            IBidModel newBid = new BidModel(1, user2, 150.0f, DateTime.UtcNow);
+            IBidModel oldBid = new BidModel(1, user1, 100.0f, DateTime.UtcNow) as IBidModel;
+            IBidModel newBid = new BidModel(1, user2, 150.0f, DateTime.UtcNow) as IBidModel;
 
             bidRepository.Bids.Add(oldBid);
 
@@ -85,8 +85,8 @@ namespace NUnitMacrow.BidTests
             BasicUser user1 = new BasicUser(1, "UserName", "User");
             BasicUser user2 = new BasicUser(2, "SecondUserName", "User2");
 
-            IBidModel bid1 = new BidModel(1, user1, 100.0f, DateTime.UtcNow);
-            IBidModel bid2 = new BidModel(2, user2, 150.0f, DateTime.UtcNow);
+            IBidModel bid1 = new BidModel(1, user1, 100.0f, DateTime.UtcNow) as IBidModel;
+            IBidModel bid2 = new BidModel(2, user2, 150.0f, DateTime.UtcNow) as IBidModel;
 
             bidRepository.Bids.Add(bid1);
             bidRepository.Bids.Add(bid2);

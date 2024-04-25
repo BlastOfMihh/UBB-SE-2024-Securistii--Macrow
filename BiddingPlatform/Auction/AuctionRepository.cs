@@ -93,7 +93,7 @@ namespace BiddingPlatform.Auction
                     int userId = Convert.ToInt32(reader["UserID"]);
                     BasicUser user = this.GetUserFromDataBase(userId);
                     BidModel bid = new BidModel(bidID, user, bidSum, timeOfBid);
-                    bids.Add(bid);
+                    bids.Add((IBidModel)bid);
                 }
             }
 
