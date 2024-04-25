@@ -29,7 +29,7 @@ namespace NUnitMacrow.UserTests
         public void TestAddUserToRepo()
         {
             // Arrange
-            IUserTemplate user = new BasicUser(1, "UserName", "User");
+            IUserTemplate user = new BasicUser(1, "UserName", "User") as IUserTemplate;
 
             // Act
             userRepository.AddUserToRepo(user);
@@ -44,7 +44,7 @@ namespace NUnitMacrow.UserTests
         public void TestRemoveUserFromRepo()
         {
             // Arrange
-            IUserTemplate user = new BasicUser(1, "UserName", "User");
+            IUserTemplate user = new BasicUser(1, "UserName", "User") as IUserTemplate;
             userRepository.AddUserToRepo(user);
 
             // Act
@@ -60,8 +60,8 @@ namespace NUnitMacrow.UserTests
         public void TestUpdateUserIntoRepo()
         {
             // Arrange
-            IUserTemplate oldUser = new BasicUser(1, "OldUserName", "OldUser");
-            IUserTemplate newUser = new BasicUser(1, "NewUserName", "NewUser");
+            IUserTemplate oldUser = new BasicUser(1, "OldUserName", "OldUser") as IUserTemplate;
+            IUserTemplate newUser = new BasicUser(1, "NewUserName", "NewUser") as IUserTemplate;
             userRepository.AddUserToRepo(oldUser);
 
             // Act
@@ -78,8 +78,8 @@ namespace NUnitMacrow.UserTests
         public void TestGetListOfUsers()
         {
             // Arrange
-            IUserTemplate user1 = new BasicUser(1, "UserName1", "User1");
-            IUserTemplate user2 = new BasicUser(2, "UserName2", "User2");
+            IUserTemplate user1 = new BasicUser(1, "UserName1", "User1") as IUserTemplate;
+            IUserTemplate user2 = new BasicUser(2, "UserName2", "User2") as IUserTemplate;
             userRepository.AddUserToRepo(user1);
             userRepository.AddUserToRepo(user2);
 

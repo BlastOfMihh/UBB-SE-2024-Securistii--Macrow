@@ -41,7 +41,7 @@ namespace BiddingPlatform.Bid
                     BasicUser user = this.GetUserFromDataBase(userId);
 
                     BidModel bid = new BidModel(bidId, user, bidSum, timeOfBid);
-                    Bids.Add(bid);
+                    Bids.Add((IBidModel)bid);
                 }
             }
         }
