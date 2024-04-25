@@ -19,7 +19,7 @@ namespace NUnitMacrow.BidTests
         }
 
         [Test]
-        public void GetBidIdEqualTest()
+        public void GetBidId_WithValidBidModel_ReturnsBidId2()
         {
             int bidId = this.BidModel.BidId;
 
@@ -27,7 +27,7 @@ namespace NUnitMacrow.BidTests
         }
 
         [Test]
-        public void SetBidId_EqualTest()
+        public void SetBidId_WithValidValue_ReturnsSameValue()
         {
             this.BidModel.BidId = 4;
 
@@ -37,7 +37,7 @@ namespace NUnitMacrow.BidTests
         }
 
         [Test]
-        public void GetBasicUserEqualTest()
+        public void GetBasicUser_WithValidBidModel_ReturnsSameBasicUser()
         {
             BasicUser basicUser = this.BidModel.BasicUser;
 
@@ -45,7 +45,7 @@ namespace NUnitMacrow.BidTests
         }
 
         [Test]
-        public void SetBasicUserEqualTest()
+        public void SetBasicUser_WithValidBasicUser_ReturnsSameBasicUser()
         {
             BasicUser newUser = new (11, "basicUserName2", "basicUserNickname2");
             this.BidModel.BasicUser = newUser;
@@ -56,7 +56,7 @@ namespace NUnitMacrow.BidTests
         }
 
         [Test]
-        public void GetBidSumEqualTest()
+        public void GetBidSum_WithValidBidModel_ReturnsBidSumOf40()
         {
             float bidSum = this.BidModel.BidSum;
 
@@ -64,7 +64,7 @@ namespace NUnitMacrow.BidTests
         }
 
         [Test]
-        public void SetBidSumEqualTest()
+        public void SetBidSum_WithValidValue_ReturnsSameValue()
         {
             this.BidModel.BidSum = 666;
 
@@ -74,7 +74,7 @@ namespace NUnitMacrow.BidTests
         }
 
         [Test]
-        public void GetBidDateEqualTest()
+        public void GetBidDateTime_WithValidBidModel_ReturnsSameDateTime()
         {
             DateTime dateTime = this.BidModel.BidDateTime;
             DateTime expectedDateTime = new (2024, 4, 23, 20, 34, 33);
@@ -83,7 +83,7 @@ namespace NUnitMacrow.BidTests
         }
 
         [Test]
-        public void SetBidDateEqualTest()
+        public void SetBidDateTime_WithValidDateTime_ReturnsSameDateTime()
         {
             DateTime newDateTime = new (2048, 8, 16, 16, 32, 32);
             this.BidModel.BidDateTime = newDateTime;
