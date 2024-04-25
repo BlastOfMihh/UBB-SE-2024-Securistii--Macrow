@@ -14,7 +14,7 @@ namespace NUnitMacrow.UserTests
         }
 
         [Test]
-        public void GetIdEqualTest()
+        public void GetId_WithValidUserTemplate_ReturnsIdOf1()
         {
             int id = this.UserTemplate.GetId();
 
@@ -22,7 +22,7 @@ namespace NUnitMacrow.UserTests
         }
 
         [Test]
-        public void SetIdEqualTest()
+        public void SetId_WithValidValue_ReturnsSameValue()
         {
             this.UserTemplate.SetId(10);
 
@@ -32,7 +32,7 @@ namespace NUnitMacrow.UserTests
         }
 
         [Test]
-        public void GetUsernameEqualTest()
+        public void GetUsername_WithValidUserTemplate_ReturnsUsername1()
         {
             string username = this.UserTemplate.GetUsername();
 
@@ -40,7 +40,7 @@ namespace NUnitMacrow.UserTests
         }
 
         [Test]
-        public void SetUsernameEqualTest()
+        public void SetUsername_WithValidValue_ReturnsUsername222()
         {
             this.UserTemplate.SetUsername("Username222");
 
