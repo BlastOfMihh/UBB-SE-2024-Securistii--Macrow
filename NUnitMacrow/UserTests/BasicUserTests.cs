@@ -26,24 +26,24 @@ namespace NUnitMacrow.UserTests
         {
         }
         [Test]
-        public void TestUsernameGetterAndConstructor()
+        public void TestGetUsername_IsEqualToWhatWasPassedINTheConstructor_True()
         {
             Assert.That(this.basicUser.GetUsername(), Is.EqualTo(username));
         }
         [Test]
-        public void TestNicknameGetterAndConstructor()
+        public void TestNickname_IsEqualToWhatWasPassedINTheConstructor_True()
         {
             Assert.That(this.basicUser.GetNickname(), Is.EqualTo(this.userNickname));
         }
         [Test]
-        public void TestUsernameSetter()
+        public void TestSetUsername_SetToADifferentValue_TheGetterIsEqualToThatValue()
         {
             string testUsername = "gigel";
             basicUser.SetUsername(testUsername);
             Assert.That(this.basicUser.GetUsername(), Is.EqualTo(testUsername));
         }
         [Test]
-        public void TestUserNicknameSetter()
+        public void TestSetNickname_SetToADifferentValue_TheGetterIsEqualToThatValue()
         {
             string testNickname = "gigelescu";
             basicUser.SetNickname(testNickname);
