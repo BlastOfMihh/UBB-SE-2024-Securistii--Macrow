@@ -37,7 +37,7 @@ namespace NUnitMacrow.AuctionTests
         
 
         [Test]
-        public void TestAddingToRepo()
+        public void TestAddingToRepo_ValidDB_AddedSuccessfully()
         {
             IAuctionRepository auctionRepository = new AuctionRepository("Data Source=DESKTOP-LF9HLFA\\SQLEXPRESS;Initial Catalog=TESTINGISSsecuristii;Integrated Security=true;");
 
@@ -52,7 +52,7 @@ namespace NUnitMacrow.AuctionTests
         }
 
         [Test]
-        public void TestRemovingFromRepo()
+        public void TestRemovingFromRepo_ValidDBValidAuction_RemovedSuccessfully()
         {
             IAuctionRepository auctionRepository = new AuctionRepository("Data Source=DESKTOP-LF9HLFA\\SQLEXPRESS;Initial Catalog=TESTINGISSsecuristii;Integrated Security=true;");
 
@@ -70,7 +70,7 @@ namespace NUnitMacrow.AuctionTests
         }
 
         [Test]
-        public void TestUpdatingIntoRepo()
+        public void TestUpdatingIntoRepo_ValidDBValidAuctions_UpdatedSuccessfully()
         {
             IAuctionRepository auctionRepository = new AuctionRepository("Data Source=DESKTOP-LF9HLFA\\SQLEXPRESS;Initial Catalog=TESTINGISSsecuristii;Integrated Security=true;");
 
@@ -95,21 +95,21 @@ namespace NUnitMacrow.AuctionTests
         }
 
         [Test]
-        public void TestRepoConstructor()
+        public void TestRepoConstructor_ValidDBWithExistingRows_InitialisedCorrectly()
         {
             IAuctionRepository auctionRepository = new AuctionRepository("Data Source=DESKTOP-LF9HLFA\\SQLEXPRESS;Initial Catalog=ISSsecuristii;Integrated Security=true;");
             Assert.That(auctionRepository.ListOfAuctions.Count, Is.EqualTo(6));
         }
 
         [Test]
-        public void TestGetMaxBidSum()
+        public void TestGetMaxBidSum_ValidDBExistingAuctions_ReturnedValueIsCorrect()
         {
             IAuctionRepository auctionRepository = new AuctionRepository("Data Source=DESKTOP-LF9HLFA\\SQLEXPRESS;Initial Catalog=ISSsecuristii;Integrated Security=true;");
             Assert.That(auctionRepository.GetBidMaxSum(1), Is.EqualTo(300.3f));
         }
 
         [Test]
-        public void TestAddToDB()
+        public void TestAddToDB_ValidDBValidAuction_AddedToDBSuccessfully()
         {
             IAuctionRepository auctionRepository = new AuctionRepository("Data Source=DESKTOP-LF9HLFA\\SQLEXPRESS;Initial Catalog=TESTINGISSsecuristii;Integrated Security=true;");
             auctionRepository.AddToDB("Test", "Test", DateTime.Now, 100);
