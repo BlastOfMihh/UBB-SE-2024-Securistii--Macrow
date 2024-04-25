@@ -15,7 +15,7 @@ namespace NUnitMacrow.AuctionTests
     internal class AuctionModelTest
     {
         [Test]
-        public void TestAddUserToAuction_UserAddedToList()
+        public void TestAddUserToAuction_ValidUser_UserAddedToList()
         {
             var userMock = new BasicUser(1, "User1", "nickname1");
             var auctionMock = new AuctionModel(1, DateTime.Now, "Test Auction", "Test", 100.0f);
@@ -25,7 +25,7 @@ namespace NUnitMacrow.AuctionTests
         }
 
         [Test]
-        public void TestAddBidToAuction_BidAddedToList()
+        public void TestAddBidToAuction_ValidBid_BidAddedToList()
         {
             var userMock = new BasicUser(1, "User1", "nickname1");
             var bidMock = new BidModel(1, userMock, 50.0f, DateTime.Now);

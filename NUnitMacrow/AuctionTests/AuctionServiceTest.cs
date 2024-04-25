@@ -17,7 +17,7 @@ namespace NUnitMacrow.AuctionTests
         }
 
         [Test]
-        public void TestAddAuctionToService()
+        public void TestAddAuctionToService_ValidAuction_AuctionSuccessfullyAdded()
         {
             AuctionService auctionService = new AuctionService(_auctionRepository);
             auctionService.AddAuction(20, DateTime.Now, "desc", "name", 350);
@@ -25,7 +25,7 @@ namespace NUnitMacrow.AuctionTests
         }
 
         [Test]
-        public void TestRemoveAuctionFromService()
+        public void TestRemoveAuctionFromService_WithAddingANewValidAuctionAndRemovingIt_AuctionRemovedSuccesfully()
         {
             try
             {
@@ -44,7 +44,7 @@ namespace NUnitMacrow.AuctionTests
         }
 
         [Test]
-        public void TestUpdateAuctionInService()
+        public void TestUpdateAuctionInService_WithAddingAnNewValidAuctionAndUpdatingIt_AuctionUpdatedSuccessfully()
         {
             AuctionService auctionService = new AuctionService(_auctionRepository);
             DateTime now = DateTime.Now;
@@ -56,7 +56,7 @@ namespace NUnitMacrow.AuctionTests
         }
 
         [Test]
-        public void TestGetMaxBidSum()
+        public void TestGetMaxBidSum_ValidAuctionAndBid_MaxBidRetrievedFromTheAuction()
         {
             //AuctionService auctionService = new AuctionService(_auctionRepository);
             //DateTime now = DateTime.Now;
