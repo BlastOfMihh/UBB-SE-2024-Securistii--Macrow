@@ -5,46 +5,46 @@ namespace NUnitMacrow.UserTests
 {
     public class UserTemplateTest
     {
-        private UserTemplate userTemplate { get; set; }
+        private UserTemplate UserTemplate { get; set; }
 
         [SetUp]
         public void Setup()
         {
-            this.userTemplate = new UserTemplate(1, "Username1");
+            this.UserTemplate = new UserTemplate(1, "Username1");
         }
 
         [Test]
-        public void GetId_EqualTest()
+        public void GetIdEqualTest()
         {
-            int id = this.userTemplate.GetId();
+            int id = this.UserTemplate.GetId();
 
             Assert.AreEqual(1, id);
         }
 
         [Test]
-        public void SetId_EqualTest()
+        public void SetIdEqualTest()
         {
-            this.userTemplate.SetId(10);
+            this.UserTemplate.SetId(10);
 
-            int id = this.userTemplate.GetId();
+            int id = this.UserTemplate.GetId();
 
             Assert.AreEqual(10, id);
         }
 
         [Test]
-        public void GetUsername_EqualTest()
+        public void GetUsernameEqualTest()
         {
-            string username = this.userTemplate.GetUsername();
+            string username = this.UserTemplate.GetUsername();
 
             Assert.AreEqual("Username1", username);
         }
 
         [Test]
-        public void SetUsername_EqualTest()
+        public void SetUsernameEqualTest()
         {
-            this.userTemplate.SetUsername("Username222");
+            this.UserTemplate.SetUsername("Username222");
 
-            string username = this.userTemplate.GetUsername();
+            string username = this.UserTemplate.GetUsername();
 
             Assert.AreEqual("Username222", username);
         }
