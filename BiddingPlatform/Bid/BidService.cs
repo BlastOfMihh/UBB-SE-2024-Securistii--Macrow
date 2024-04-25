@@ -17,17 +17,17 @@ namespace BiddingPlatform.Bid
             this.BidRepository.AddBidToRepo(toAdd);
         }
 
-        public void RemoveBid(int id, BasicUser user, float bidSum, DateTime biddate)
+        public void RemoveBid(int bidID, BasicUser user, float bidSum, DateTime biddate)
         {
-            IBidModel toremove = new BidModel(id, user, bidSum, biddate) as IBidModel;
+            IBidModel toremove = new BidModel(bidID, user, bidSum, biddate) as IBidModel;
             this.BidRepository.DeleteBidFromRepo(toremove);
         }
 
-        public void UpdateBid(int id, BasicUser olduser, float oldbidSum, DateTime oldbiddate, BasicUser newuser, float newbidSum, DateTime newbiddate)
+        public void UpdateBid(int bidID, BasicUser userToBeUpdated, float bidSumToBeUpdated, DateTime bidDateToBeUpdated, BasicUser newuser, float newbidSum, DateTime newBidDate)
         {
-            IBidModel oldbid = new BidModel(id, olduser, oldbidSum, oldbiddate) as IBidModel;
-            IBidModel newbid = new BidModel(id, newuser, newbidSum, newbiddate) as IBidModel;
-            this.BidRepository.UpdateBidIntoRepo(oldbid, newbid);
+            IBidModel bidToBeUpdated = new BidModel(bidID, userToBeUpdated, bidSumToBeUpdated, bidDateToBeUpdated) as IBidModel;
+            IBidModel newBid = new BidModel(bidID, newuser, newbidSum, newBidDate) as IBidModel;
+            this.BidRepository.UpdateBidIntoRepo(bidToBeUpdated, newBid);
         }
 
         public List<IBidModel> GetBids()
