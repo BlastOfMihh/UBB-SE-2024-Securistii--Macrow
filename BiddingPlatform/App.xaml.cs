@@ -1,5 +1,6 @@
 using System.Configuration;
 using System.Data;
+using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -19,12 +20,17 @@ namespace BiddingPlatform
         {
             base.OnStartup(e);
 
+            HttpClient httpClient = new HttpClient
+            {
+                BaseAddress = new Uri("http://localhost:7100")
+            };
+
             string dbConnectionString = "Data Source = RICHARD_LAPTOP; Initial Catalog = BidingSystem; Integrated Security = true;";
             dbConnectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=BidingSystem;Integrated Security=True";
 
             var auctionRepository = new AuctionRepository(dbConnectionString);
             var auctionService = new AuctionService(auctionRepository);
-            var bidRepository = new BidRepository(dbConnectionString);
+            var bidRepository = new BidRepository(httpClient);
             var bidService = new BidService(bidRepository);
             Page liveAuctionPage = new LiveAuctionPage(auctionService, bidService);
             Page adminLiveAuctionPage = new AdminLiveAuctionPage(auctionService, bidService);

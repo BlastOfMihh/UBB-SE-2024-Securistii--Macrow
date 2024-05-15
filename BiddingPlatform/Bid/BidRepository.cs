@@ -1,77 +1,47 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
 using BiddingPlatform.User;
 
 namespace BiddingPlatform.Bid
 {
     public class BidRepository : IBidRepository
     {
-        private string connectionString;
+        private readonly HttpClient httpClient;
         public List<IBidModel> Bids { get; set; }
 
-        public BidRepository(string connectionString)
+        public BidRepository(HttpClient httpClient)
         {
-            this.connectionString = connectionString;
+            this.httpClient = httpClient;
             this.Bids = new List<IBidModel>();
-            this.LoadBidsFromDatabase();
+            this.LoadBidsFromApi().Wait();
         }
 
-        public BidRepository(List<IBidModel> bids, string connectionString)
+        public BidRepository(List<IBidModel> bids, HttpClient httpClient)
         {
-            this.connectionString = connectionString;
+            this.httpClient = httpClient;
             Bids = bids;
         }
 
-        private void LoadBidsFromDatabase()
+        private async Task LoadBidsFromApi()
         {
-            string query = "SELECT * FROM Bid";
-
-            using (SqlConnection connection = new SqlConnection(this.connectionString))
+            var bids = await httpClient.GetFromJsonAsync<List<BidModel>>("http://localhost:7100/api/bids");
+            if (bids != null)
             {
-                SqlCommand command = new SqlCommand(query, connection);
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
+                foreach (var bid in bids)
                 {
-                    int bidId = Convert.ToInt32(reader["BidID"]);
-                    float bidSum = Convert.ToSingle(reader["BidSum"]);
-                    DateTime timeOfBid = Convert.ToDateTime(reader["TimeOfBid"]);
-                    int userId = Convert.ToInt32(reader["UserID"]);
-
-                    BasicUser user = this.GetUserFromDataBase(userId);
-
-                    BidModel bid = new BidModel(bidId, user, bidSum, timeOfBid);
-                    Bids.Add((IBidModel)bid);
+                    Bids.Add(bid);
                 }
             }
         }
 
-        private BasicUser GetUserFromDataBase(int userID)
+        public async Task AddBidToRepo(IBidModel bid)
         {
-            string query = $"SELECT * FROM Users WHERE UserID = {userID}";
-
-            using (SqlConnection connection = new SqlConnection(this.connectionString))
-            {
-                SqlCommand command = new SqlCommand(query, connection);
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    string username = reader["Username"].ToString();
-                    string nickname = reader["Nickname"].ToString();
-                    string userType = reader["UserType"].ToString();
-                    BasicUser user;
-                    user = new BasicUser(userID, username, nickname);
-                    return user;
-                }
-            }
-            return null;
-        }
-
-        public void AddBidToRepo(IBidModel bid)
-        {
-            this.Bids.Add(bid);
+            var response = await httpClient.PostAsJsonAsync("http://localhost:7100/api/bids", bid);
+            response.EnsureSuccessStatusCode();
+            Bids.Add(bid);
         }
 
         public List<IBidModel> GetBids()
@@ -79,17 +49,21 @@ namespace BiddingPlatform.Bid
             return this.Bids;
         }
 
-        public void DeleteBidFromRepo(IBidModel bid)
+        public async Task DeleteBidFromRepo(IBidModel bid)
         {
-            this.Bids.Remove(bid);
+            var response = await httpClient.DeleteAsync($"http://localhost:7100/api/bids/{bid.BidId}");
+            response.EnsureSuccessStatusCode();
+            Bids.Remove(bid);
         }
 
-        public void UpdateBidIntoRepo(IBidModel oldbid, IBidModel newbid)
+        public async Task UpdateBidIntoRepo(IBidModel oldBid, IBidModel newBid)
         {
-            int oldbidIndex = this.Bids.FindIndex(bid => bid == oldbid);
-            if (oldbidIndex != -1)
+            var response = await httpClient.PutAsJsonAsync($"http://localhost:7100/api/bids/{oldBid.BidId}", newBid);
+            response.EnsureSuccessStatusCode();
+            int oldBidIndex = this.Bids.FindIndex(bid => bid == oldBid);
+            if (oldBidIndex != -1)
             {
-                this.Bids[oldbidIndex] = newbid;
+                this.Bids[oldBidIndex] = newBid;
             }
         }
     }

@@ -3,9 +3,9 @@
     public interface IBidRepository
     {
         List<IBidModel> Bids { get; set; }
-        void AddBidToRepo(IBidModel bid);
-        void DeleteBidFromRepo(IBidModel bid);
+        Task AddBidToRepo(IBidModel bid);
+        Task DeleteBidFromRepo(IBidModel bid);
         List<IBidModel> GetBids();
-        void UpdateBidIntoRepo(IBidModel oldbid, IBidModel newbid);
+        Task UpdateBidIntoRepo(IBidModel oldbid, IBidModel newbid);
     }
 }
